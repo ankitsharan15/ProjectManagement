@@ -63,16 +63,18 @@ public class CodeNinjaServiceImpl implements CodeNinjaServiceInterface {
 		List<Project> projectList = projectRepository.findByCustomerId(customerId);
 		if (projectList != null) {
 			for (Project project : projectList) {
-				allProjects = new AllProjectsDTO();
-				allProjects.setProjectId(project.getId());
-				allProjects.setProjectName(project.getName());
-				allProjects.setStatus(project.getStatus());
-				allProjects.setTeamLeadId(project.getProjectLeadId());
-				teamLeadName = employeeRepository.findByCustomerIdAndId(customerId, project.getProjectLeadId())
-						.getName();
-				allProjects.setTeamLeadName(teamLeadName);
-				allProjects.setCompletionDate(project.getEstimatedCompletionDate());
-				allProjectsList.add(allProjects);
+				Employee teamLead = employeeRepository.findByCustomerIdAndId(customerId, project.getProjectLeadId());
+				if (teamLead != null) {
+					allProjects = new AllProjectsDTO();
+					allProjects.setProjectId(project.getId());
+					allProjects.setProjectName(project.getName());
+					allProjects.setStatus(project.getStatus());
+					allProjects.setTeamLeadId(project.getProjectLeadId());
+					teamLeadName = teamLead.getName();
+					allProjects.setTeamLeadName(teamLeadName);
+					allProjects.setCompletionDate(project.getEstimatedCompletionDate());
+					allProjectsList.add(allProjects);
+				}
 			}
 		}
 		return allProjectsList;
@@ -110,15 +112,19 @@ public class CodeNinjaServiceImpl implements CodeNinjaServiceInterface {
 		List<Bug> bugsList = bugRepository.findByCustomerIdAndAssignedTo(customerId, employeeId);
 		if (bugsList != null) {
 			for (Bug bug : bugsList) {
-				allBugs = new AllBugsDTO();
-				allBugs.setBugId(bug.getId());
-				allBugs.setBugName(bug.getName());
-				allBugs.setProjectId(bug.getProjectId());
-				projectName = projectRepository.findByCustomerIdAndId(customerId, bug.getProjectId()).getName();
-				allBugs.setProjectName(projectName);
-				severity = bugCategoryRepository.findByCustomerIdAndId(customerId, bug.getCategoryId()).getSeverity();
-				allBugs.setSeverity(severity);
-				allBugsList.add(allBugs);
+				Project project = projectRepository.findByCustomerIdAndId(customerId, bug.getProjectId());
+				if (project != null) {
+					allBugs = new AllBugsDTO();
+					allBugs.setBugId(bug.getId());
+					allBugs.setBugName(bug.getName());
+					allBugs.setProjectId(bug.getProjectId());
+					projectName = project.getName();
+					allBugs.setProjectName(projectName);
+					severity = bugCategoryRepository.findByCustomerIdAndId(customerId, bug.getCategoryId())
+							.getSeverity();
+					allBugs.setSeverity(severity);
+					allBugsList.add(allBugs);
+				}
 			}
 		}
 		return allBugsList;
@@ -154,20 +160,23 @@ public class CodeNinjaServiceImpl implements CodeNinjaServiceInterface {
 		List<Bug> bug;
 		Employee employee = employeeRepository.findByCustomerIdAndId(customerId, employeeId);
 		if (employee != null) {
-			List<Review> reviewList = reviewRepository.findByCustomerIdAndProjectId(customerId,
-					employee.getProjectId());
+			List<Review> reviewList = reviewRepository.findByCustomerIdAndAssignedTo(customerId,
+					employeeId);
 			if (reviewList != null) {
 				for (Review review : reviewList) {
 					allFiles = new AllFilesDTO();
 					allFiles.setFileName(review.getFileName());
 					allFiles.setFileUrl(review.getFileUrl());
 					allFiles.setStatus(review.getStatus());
-					bug = bugRepository.findByCustomerIdAndFileUrl(customerId, review.getFileUrl());
-					for (Bug bugs : bug) {
-						bugDTO = new BugDTO();
-						bugDTO.setBugId(bugs.getId());
-						bugDTO.setBugName(bugs.getName());
-						bugsList.add(bugDTO);
+					allFiles.setReviewId(review.getId());
+					bug = bugRepository.findByCustomerIdAndAssignedTo(customerId, employeeId);
+					if (bug != null) {
+						for (Bug bugs : bug) {
+							bugDTO = new BugDTO();
+							bugDTO.setBugId(bugs.getId());
+							bugDTO.setBugName(bugs.getName());
+							bugsList.add(bugDTO);
+						}
 					}
 					allFiles.setBugList(bugsList);
 					allFilesList.add(allFiles);
@@ -217,13 +226,33 @@ public class CodeNinjaServiceImpl implements CodeNinjaServiceInterface {
 	public EditProjectDTO getEditProject(String customerId, String projectId) {
 		// TODO Auto-generated method stub
 		EditProjectDTO editProjectDTO = new EditProjectDTO();
-		List<EmployeeTeamDTO> employeeTeamList = new ArrayList<>();
+		EmployeeTeamDTO employeeTeamList = new EmployeeTeamDTO();
 		Project project = projectRepository.findByCustomerIdAndId(customerId, projectId);
+		List<EmployeeDTO> employeeDTOList = new ArrayList<>();
+		List<TeamDTO> teamDTOList = new ArrayList<>();
+		EmployeeDTO employeeDTO;
+		TeamDTO teamDTO;
 		if (project != null) {
-			Team team = teamRepository.findByCustomerIdAndId(customerId, project.getTeamId());
-			if (team != null) {
-				Employee employee = employeeRepository.findByCustomerIdAndId(customerId, project.getProjectLeadId());
-				if (employee != null) {
+			List<Team> teamList = teamRepository.findByCustomerId(customerId);
+			if (teamList != null) {
+				List<Employee> employeeList = employeeRepository.findByCustomerId(customerId);
+				if (employeeList != null) {
+					for(Team team : teamList){
+						teamDTO  = new TeamDTO();
+						teamDTO.setTeamId(team.getId());
+						teamDTO.setTeamName(team.getName());
+						teamDTOList.add(teamDTO);
+					}
+					for(Employee employee : employeeList){
+						employeeDTO = new EmployeeDTO();
+						employeeDTO.setEmployeeId(employee.getId());
+						employeeDTO.setEmployeeName(employee.getName());
+						employeeDTOList.add(employeeDTO);
+					}
+					employeeTeamList.setTeamsList(teamDTOList);
+					employeeTeamList.setEmployeeList(employeeDTOList);
+					Team team = teamRepository.findByCustomerIdAndId(customerId, project.getTeamId());
+					Employee employee = employeeRepository.findByCustomerIdAndId(customerId, project.getProjectLeadId());
 					editProjectDTO.setCompletionDate(project.getEstimatedCompletionDate());
 					editProjectDTO.setEmployeeTeamDTO(employeeTeamList);
 					editProjectDTO.setProjectId(projectId);

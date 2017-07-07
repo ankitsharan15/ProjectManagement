@@ -10,6 +10,6 @@ import com.projectmanagement.CodeNinja.entity.Review;
 public interface ReviewRepository extends CrudRepository<Review, String>{
 
 	public Review findByCustomerIdAndId(String customerId, String id);
-	public List<Review> findByCustomerIdAndProjectId(String customerId,String projectId);
+	public List<Review> findByCustomerIdAndAssignedTo(String customerId,String assignedTo);
 
 }
