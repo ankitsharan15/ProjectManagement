@@ -1,6 +1,7 @@
 package com.projectmanagement.CodeNinja.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class EditProjectDTO {
 
@@ -12,6 +13,15 @@ public class EditProjectDTO {
 	private String teamLeadId;
 	private String teamLeadName;
 	private Date completionDate;
+	private List<EmployeeTeamDTO> employeeTeamDTO;
+
+	public List<EmployeeTeamDTO> getEmployeeTeamDTO() {
+		return employeeTeamDTO;
+	}
+
+	public void setEmployeeTeamDTO(List<EmployeeTeamDTO> employeeTeamDTO) {
+		this.employeeTeamDTO = employeeTeamDTO;
+	}
 
 	public Date getCompletionDate() {
 		return completionDate;
@@ -81,7 +91,7 @@ public class EditProjectDTO {
 	public String toString() {
 		return "EditProjectDTO [projectId=" + projectId + ", projectName=" + projectName + ", teamId=" + teamId
 				+ ", teamName=" + teamName + ", repoUrl=" + repoUrl + ", teamLeadId=" + teamLeadId + ", teamLeadName="
-				+ teamLeadName + ", completionDate=" + completionDate + "]";
+				+ teamLeadName + ", completionDate=" + completionDate + ", employeeTeamDTO=" + employeeTeamDTO + "]";
 	}
 
 }

@@ -10,5 +10,4 @@ public interface TeamRepository extends CrudRepository<Team, String>{
 
 	public Team findByCustomerIdAndId(String customerId, String id);
 	public List<Team> findByCustomerId(String customerId);
-
 }

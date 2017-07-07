@@ -6,6 +6,7 @@ import com.projectmanagement.CodeNinja.dto.AllBugsDTO;
 import com.projectmanagement.CodeNinja.dto.AllFilesDTO;
 import com.projectmanagement.CodeNinja.dto.AllProjectsDTO;
 import com.projectmanagement.CodeNinja.dto.AssignBugDTO;
+import com.projectmanagement.CodeNinja.dto.BugFixDTO;
 import com.projectmanagement.CodeNinja.dto.BugsAssignDTO;
 import com.projectmanagement.CodeNinja.dto.CreateBugDTO;
 import com.projectmanagement.CodeNinja.dto.EditProjectDTO;
@@ -37,5 +38,7 @@ public interface CodeNinjaServiceInterface {
 	public BugsAssignDTO getBugsAssignDTO(String customerId, String bugId);
 
 	public boolean assignBug(AssignBugDTO assignBugDTO);
+	
+	public boolean changeBugStatus(BugFixDTO bugFixDTO);
 
 }

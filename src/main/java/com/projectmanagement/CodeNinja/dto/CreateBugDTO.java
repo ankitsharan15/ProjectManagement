@@ -2,11 +2,29 @@ package com.projectmanagement.CodeNinja.dto;
 
 public class CreateBugDTO {
 
+	private String customerId;
 	private String bugName;
 	private String reviewId;
+	private String bugDesc;
 	private String bugCategoryId;
 	private String fileUrl;
-	private String lineNum;
+	private int lineNum;
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getBugDesc() {
+		return bugDesc;
+	}
+
+	public void setBugDesc(String bugDesc) {
+		this.bugDesc = bugDesc;
+	}
 
 	public String getBugName() {
 		return bugName;
@@ -40,18 +58,19 @@ public class CreateBugDTO {
 		this.fileUrl = fileUrl;
 	}
 
-	public String getLineNum() {
+	public int getLineNum() {
 		return lineNum;
 	}
 
-	public void setLineNum(String lineNum) {
+	public void setLineNum(int lineNum) {
 		this.lineNum = lineNum;
 	}
 
 	@Override
 	public String toString() {
-		return "CreateBugDTO [bugName=" + bugName + ", reviewId=" + reviewId + ", bugCategoryId=" + bugCategoryId
-				+ ", fileUrl=" + fileUrl + ", lineNum=" + lineNum + "]";
+		return "CreateBugDTO [customerId=" + customerId + ", bugName=" + bugName + ", reviewId=" + reviewId
+				+ ", bugDesc=" + bugDesc + ", bugCategoryId=" + bugCategoryId + ", fileUrl=" + fileUrl + ", lineNum="
+				+ lineNum + "]";
 	}
 
 }

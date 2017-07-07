@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projectmanagement.CodeNinja.dto.AllBugsDTO;
 import com.projectmanagement.CodeNinja.dto.AllFilesDTO;
 import com.projectmanagement.CodeNinja.dto.AllProjectsDTO;
 import com.projectmanagement.CodeNinja.dto.AssignBugDTO;
+import com.projectmanagement.CodeNinja.dto.BugFixDTO;
 import com.projectmanagement.CodeNinja.dto.BugsAssignDTO;
 import com.projectmanagement.CodeNinja.dto.CreateBugDTO;
 import com.projectmanagement.CodeNinja.dto.EditProjectDTO;
@@ -90,6 +92,11 @@ public class CodeNinjaController {
 	@RequestMapping(value = "/assignBug", method = RequestMethod.POST)
 	public boolean assignBug(@RequestBody AssignBugDTO assignBugDTO) {
 		return codeNinjaService.assignBug(assignBugDTO);
+	}
+	
+	@RequestMapping(value="/bugFixed", method=RequestMethod.POST)
+	public boolean updateBugStatus(@RequestBody BugFixDTO bugFixDTO){
+		return codeNinjaService.changeBugStatus(bugFixDTO);
 	}
 
 }
