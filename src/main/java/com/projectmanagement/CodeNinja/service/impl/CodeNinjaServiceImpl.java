@@ -88,11 +88,14 @@ public class CodeNinjaServiceImpl implements CodeNinjaServiceInterface {
 		if (project != null) {
 			projectDetails.setProjectName(project.getName());
 			projectDetails.setRepoUrl(project.getRepoUrl());
-			teamName = teamRepository.findByCustomerIdAndId(customerId, project.getTeamId()).getName();
-			projectDetails.setTeamName(teamName);
-			projectLeadName = employeeRepository.findByCustomerIdAndId(customerId, project.getProjectLeadId())
-					.getName();
-			projectDetails.setProjectLeadName(projectLeadName);
+			Team team = teamRepository.findByCustomerIdAndId(customerId, project.getTeamId());
+			if (team != null) {
+				teamName = team.getName();
+				projectDetails.setTeamName(teamName);
+				projectLeadName = employeeRepository.findByCustomerIdAndId(customerId, project.getProjectLeadId())
+						.getName();
+				projectDetails.setProjectLeadName(projectLeadName);
+			}
 		}
 		return projectDetails;
 	}
