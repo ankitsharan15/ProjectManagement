@@ -1,8 +1,14 @@
 var app = angular.module('app', ["ngRoute"]);
-app.controller('Ctrl', function ($scope,$location,$rootScope) {	
-     
-});
+app.controller('Ctrl', function ($scope,$location,$rootScope,projects,bugs) {	
+$scope.user = 'Ankit Sharan';
 
+projects.getProjects().then(function(response){
+$scope.allProjects = response.data;
+});
+bugs.getBugs().then(function(response){
+$scope.allBugs = response.data;
+});
+});
 app.directive('ngEnter', function() {
         return function(scope, element, attrs) {
             element.bind("keydown keypress", function(event) {
