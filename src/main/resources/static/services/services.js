@@ -1,21 +1,14 @@
 //services for api  call
 var app = angular.module('app');
+app.factory('projects',function ($http){
+   return {
+        getByCategory:function(){
+           var url="";
+           return $http.get(url);
+       }
+   };
 
-// app.factory('userRepository',function ($http){
-
-//    return {
-
-//         getByCategory:function(product){
-
-//            var url="/category/"+product;
-
-//            return $http.get(url);
-
-//        }
-
-//    };
-
-// });
+ });
 // app.factory('productsRepository',function ($http){
     
 //      return {

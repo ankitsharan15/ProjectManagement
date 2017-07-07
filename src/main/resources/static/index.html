@@ -10,7 +10,8 @@
      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <title>Code Ninja</title>
-
+    <script src="js/app.js"></script>
+    <script src="services/services.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,6 +34,7 @@
 </head>
 
 <body ng-app="app" ng-controller ="Ctrl">
+
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -89,7 +91,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user}}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -148,7 +150,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-5 col-md-5">
+                    <div class="col-lg-5 col-md-5" ng-repeat="project in allProjects">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
@@ -156,8 +158,8 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">Project Name</div>
-                                        <div> Project status</div>
+                                        <div class="huge">{{project.projectName}}</div>
+                                        <div>{{project.projectId}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +180,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Revenue contributions</h3>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-area-chart"></div>
@@ -192,7 +194,7 @@
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
+                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Revenue Added</h3>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart"></div>
@@ -325,6 +327,8 @@
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
+
+
 
 </body>
 
