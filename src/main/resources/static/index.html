@@ -159,7 +159,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">{{project.projectName}}</div>
-                                        <div>{{project.projectId}}</div>
+                                        <div>{{project.status}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -253,50 +253,16 @@
                                             <tr>
                                                 <th>Bugs #id</th>
                                                 <th>Bug Name</th>
-                                                <th>Status</th>
+                                                <th>Severity</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Indentation</td>
-                                                <td>not fixed</td>
+                                            <tr ng-repeat = " bug in allBugs">
+                                                <td>{{bug.bugId}}</td>
+                                                <td>{{bug.bugName}}</td>
+                                                <td>{{bug.severity}}</td>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Indentation</td>
-                                                <td>not fixed</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Indentation</td>
-                                                <td>not fixed</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Indentation</td>
-                                                <td>not fixed</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Indentation</td>
-                                                <td>not fixed</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Indentation</td>
-                                                <td>not fixed</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Indentation</td>
-                                                <td>not fixed</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Indentation</td>
-                                                <td>not fixed</td>
-                                            </tr>                                        </tbody>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="text-right">
