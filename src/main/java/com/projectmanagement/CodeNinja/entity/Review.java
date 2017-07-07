@@ -23,14 +23,31 @@ public class Review {
 	private String id;
 	@Column(name = "file_name")
 	private String fileName;
+	@Column(name="file_url")
+	private String fileUrl;
 	@Column(name = "assigned_to")
 	private String assignedTo;
+	@Column(name="project_id")
+	private String projectId;
 	@Column(name = "created_on")
 	private Date createdOn;
 	@Column(name="modified_on")
 	private Date modifiedOn;
 	@Column(name="status")
 	private String status;
+	
+	public String getFileUrl() {
+		return fileUrl;
+	}
+	public void setFileUrl(String fileUrl) {
+		this.fileUrl = fileUrl;
+	}
+	public String getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
+	}
 	public String getCustomerId() {
 		return customerId;
 	}
@@ -75,8 +92,9 @@ public class Review {
 	}
 	@Override
 	public String toString() {
-		return "Review [customerId=" + customerId + ", id=" + id + ", fileName=" + fileName + ", assignedTo="
-				+ assignedTo + ", createdOn=" + createdOn + ", modifiedOn=" + modifiedOn + ", status=" + status + "]";
+		return "Review [customerId=" + customerId + ", id=" + id + ", fileName=" + fileName + ", fileUrl=" + fileUrl
+				+ ", assignedTo=" + assignedTo + ", projectId=" + projectId + ", createdOn=" + createdOn
+				+ ", modifiedOn=" + modifiedOn + ", status=" + status + "]";
 	}
 	
 }
