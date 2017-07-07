@@ -21,6 +21,16 @@ public class BugCategory {
 	private String id;
 	@Column(name = "name")
 	private String name;
+	@Column(name = "severity")
+	private float severity;
+
+	public float getSeverity() {
+		return severity;
+	}
+
+	public void setSeverity(float severity) {
+		this.severity = severity;
+	}
 
 	public String getCustomerId() {
 		return customerId;
@@ -48,7 +58,8 @@ public class BugCategory {
 
 	@Override
 	public String toString() {
-		return "BugCategory [customerId=" + customerId + ", id=" + id + ", name=" + name + "]";
+		return "BugCategory [customerId=" + customerId + ", id=" + id + ", name=" + name + ", severity=" + severity
+				+ "]";
 	}
 
 }
