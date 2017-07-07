@@ -29,9 +29,72 @@ public class Project {
 	private String projectLeadId;
 	@Column(name = "created_on")
 	private Date createdOn;
+	@Column(name = "modified_on")
+	private Date modifiedOn;
 	@Column(name = "estimated_completion_date")
 	private Date estimatedCompletionDate;
 	@Column(name = "status")
 	private String status;
+	public String getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getTeamId() {
+		return teamId;
+	}
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
+	}
+	public String getProjectLeadId() {
+		return projectLeadId;
+	}
+	public void setProjectLeadId(String projectLeadId) {
+		this.projectLeadId = projectLeadId;
+	}
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
+	public Date getEstimatedCompletionDate() {
+		return estimatedCompletionDate;
+	}
+	public void setEstimatedCompletionDate(Date estimatedCompletionDate) {
+		this.estimatedCompletionDate = estimatedCompletionDate;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	@Override
+	public String toString() {
+		return "Project [customerId=" + customerId + ", id=" + id + ", name=" + name + ", teamId=" + teamId
+				+ ", projectLeadId=" + projectLeadId + ", createdOn=" + createdOn + ", modifiedOn=" + modifiedOn
+				+ ", estimatedCompletionDate=" + estimatedCompletionDate + ", status=" + status + "]";
+	}
+	
 	
 }
