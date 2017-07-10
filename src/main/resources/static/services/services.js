@@ -3,6 +3,7 @@ var app = angular.module('app');
 app.factory('projects',function ($http){
    return {
         getProjects:function(){
+
            var url="http://10.177.1.114:8090/v1/bugsmanagement/getAllProjects?customerId=C123";
            return $http.get(url);
        }
@@ -12,7 +13,7 @@ app.factory('projects',function ($http){
 app.factory('bugs',function ($http){
    return {
         getBugs:function(){
-           var url="http://10.177.1.114:8090/v1/bugsmanagement/getAllBugs?customerId=C123&employeeId=E001";
+           var url="http://localhost:8090/v1/bugsmanagement/getAllBugs?customerId=C123&employeeId=E001";
            return $http.get(url);
        }
    };
@@ -22,7 +23,7 @@ app.factory('bugs',function ($http){
 app.factory('Files',function ($http){
    return {
         getAllFiles:function(){
-           var url="http://10.177.1.114:8090/v1/bugsmanagement/getAllFiles?customerId=C123&employeeId=E001";
+           var url="http://localhost:8090/v1/bugsmanagement/getAllBugs?customerId=C123&employeeId=E001";
            return $http.get(url);
        }
    };
