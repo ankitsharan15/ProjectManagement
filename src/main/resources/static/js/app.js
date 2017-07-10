@@ -1,13 +1,21 @@
 var app = angular.module('app', ["ngRoute"]);
-app.controller('Ctrl', function ($scope,$location,$rootScope,projects,bugs) {	
+app.controller('Ctrl', function ($scope,$location,$rootScope,projects,bugs,Files) {	
 $scope.user = 'Ankit Sharan';
 
 projects.getProjects().then(function(response){
 $scope.allProjects = response.data;
 });
+    $scope.anupa='nai mili';
 bugs.getBugs().then(function(response){
 $scope.allBugs = response.data;
 });
+//          var url="http://10.177.1.114:8090/v1/bugsmanagement/getAllFiles?customerId=C123&employeeId=E001";
+//          $scope.allFiles = $http.get(url);
+//    Files.getAllFiles().then(function(response){
+//    $scope.allFiles = response.data;
+//        var x = $scope.allFiles;
+//        console.log("and the data is :"+x);
+//    });
 });
 app.directive('ngEnter', function() {
         return function(scope, element, attrs) {

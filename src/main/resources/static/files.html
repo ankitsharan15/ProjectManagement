@@ -14,10 +14,14 @@
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+<!--    <link rel="stylesheet" href="css/style.css">-->
+<!--    <link href="css/structure.css" rel="stylesheet">-->
+    <link href="css/form.css" rel="stylesheet"> 
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,7 +32,7 @@
 
 </head>
 
-<body>
+<body ng-app="app" ng-controller ="Ctrl">
 
     <div id="wrapper">
 
@@ -126,6 +130,7 @@
 
         <div id="page-wrapper">
 
+
             <div class="container-fluid">
 
                 <!-- Page Heading -->
@@ -144,6 +149,176 @@
                         </ol>
                     </div>
                 </div>
+                
+                <div class="row">
+                <div class="col-lg-12">
+                        <div class="panel panel-default">
+<!--
+                            <div class="panel-heading">Activity Panel</h3>
+                            </div>
+-->
+                            <div class="panel-body">
+                                <div class="list-group" ng-repeat = "file in allFiles">
+<!--
+                                    <a href="www.google.co.in" class="list-group-item">
+                                        <span class="badge" ng-click="">+</span>
+                                        <span ng-click="file.file_url">{{file.file_name}}</span>
+                                    </a>
+-->
+                                    <div class="list-group-item">
+<!--                                        <a href="" ng-bind-html="" class="badge">+</a>-->
+                                           <div id = "stage">
+      </div>
+       <div id ="url">
+                                        </div>                                 
+                                        
+                                        <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left: 88%; margin-top: -2%; font-size: 15px; padding: 10px 10px 10px 10px;">Add Bugs</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Bugs</h4>
+      </div>
+      <div class="modal-body">
+        
+          <div id="container" class="ltr">
+
+<!--
+<h1 id="logo">
+<a href="http://www.wufoo.com" title="Powered by Wufoo">Wufoo</a>
+</h1>
+-->
+
+<form id="form2" name="form2" class="wufoo  page" accept-charset="UTF-8" autocomplete="off" enctype="multipart/form-data" method="post" novalidate>
+  
+<!--
+<header id="header" class="info">
+<h2>Bug Tracker Copy</h2>
+<div>You find em, we'll squish 'em.</div>
+</header>
+-->
+    <ul>
+<li id="foli0" class="notranslate      ">
+<label class="desc" id="title0" for="Field0">
+Bug name
+<span id="req_0" class="req">*</span>
+</label>
+<div>
+<input id="Field0" name="Field0" type="text" class="field text large" value="" maxlength="255" tabindex="1" onkeyup=""       required placeholder="" />
+</div>
+<p class="instruct" id="instruct0"><small>Please give a name for the bug</small></p>
+</li>
+<li id="foli11" class="notranslate">
+<label class="desc" id="title11" for="Field11">
+Bug category
+<span id="req_11" class="req">*</span>
+</label>
+<div>
+<input id="Field11" name="Field11" type="text" class="field text large" value="" maxlength="255" tabindex="2" onkeyup=""       required placeholder="" />
+</div>
+<p class="instruct" id="instruct11"><small>Please give a bug category</small></p>
+</li>
+<li id="foli10" class="notranslate      ">
+<label class="desc" id="title10" for="Field10">
+Line number
+<span id="req_10" class="req">*</span>
+</label>
+<div>
+<input id="Field10" name="Field10" type="text" class="field text large" value="" maxlength="255" tabindex="3" onkeyup=""       required placeholder="" />
+</div>
+<p class="instruct" id="instruct10"><small>Please mention the line number</small></p>
+</li>
+<li id="foli1"
+class="notranslate altInstruct     "><label class="desc" id="title1" for="Field1">
+Describe in detail what happened
+<span id="req_1" class="req">*</span>
+</label>
+
+<div>
+<textarea id="Field1"
+name="Field1"
+class="field textarea medium"
+spellcheck="true"
+rows="10" cols="50"
+tabindex="4"
+onkeyup=""
+placeholder=""
+      required  ></textarea>
+
+</div>
+
+<p class="instruct" id="instruct1"><small>Please be as specific as possible. Basically, explain issue caused by bug</small></p></li>
+<!--
+<li id="foli8" class="rightHalf      ">
+<label class="desc notranslate" id="title8" for="Field8">
+Severity
+</label>
+<div>
+<select id="Field8" name="Field8" class="field select medium"       tabindex="5" >
+<option
+value="" selected="selected">
+<span class="notranslate"></span>
+</option>
+<option
+value="Low" >
+<span class="notranslate">Low</span>
+</option>
+<option
+value="Medium" >
+<span class="notranslate">Medium</span>
+</option>
+<option
+value="High" >
+<span class="notranslate">High</span>
+</option>
+</select>
+</div>
+</li> 
+-->
+        <li class="buttons ">
+<div>
+
+                    <input id="saveForm" name="saveForm" class="btTxt submit"
+    type="submit" value="Submit"
+ />
+
+</div>
+</li>
+
+<li class="hide">
+<label for="comment">Do Not Fill This Out</label>
+<textarea name="comment" id="comment" rows="1" cols="1"></textarea>
+<input type="hidden" id="idstamp" name="idstamp" value="b8WY/UYDeU5qncV4bI3kPsYdZuEp6ug/djSwEj6hbiA=" />
+</li>
+</ul>
+</form>
+ 
+
+</div>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                
+                </div>
  
 
             </div>
@@ -160,9 +335,35 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="scripts/wufoo.js"></script>
 
 
+<script>
+$(document).ready(function(){
 
+        $.ajax({url: "http://10.177.1.114:8090/v1/bugsmanagement/getAllFiles?customerId=C123&employeeId=E002", success: function(response){
+                  //$('#stage').html('<p> FileName: ' + response[0].fileName + '</p>');
+                   $('#url').append('<p><a href="'+response[0].fileUrl+'" target = "_blank">' + response[0].fileName + '</a></p>');
+
+        }});
+
+});    
+</script>
+<!--
+          <script type = "text/javascript" language = "javascript">
+         $(document).ready(function() {
+           $("button").click(function(){
+				
+               $.getJSON('http://10.177.1.114:8090/v1/bugsmanagement/getAllFiles?customerId=C123&employeeId=E001', function(jd) {
+                  $('#stage').html('<p> FileName: ' + jd + '</p>');
+                  $('#stage').append('<p>Age : ' + jd.fileName+ '</p>');
+                  $('#stage').append('<p> Sex: ' + jd.fileUrl+ '</p>');
+               });
+					
+            });
+         });
+      </script>
+-->
 </body>
 
 </html>
